@@ -35,7 +35,7 @@ const data = {
   navMain: [
     {
       title: "试炼场",
-      url: "#",
+      url: "/dashboard/playground",
       icon: SquareTerminal,
       isActive: true,
       items: [
@@ -126,7 +126,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/dashboard">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <GraduationCap className="size-6" />
                 </div>
