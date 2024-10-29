@@ -11,29 +11,24 @@ export default function PlaygroundLayout({
   console,
 }: Readonly<{
   children: React.ReactNode;
-  team: React.ReactNode;
-  analytics: React.ReactNode;
+  problem: React.ReactNode;
+  editor: React.ReactNode;
+  console: React.ReactNode;
 }>) {
   return (
     <div className="flex flex-1 rounded-b-xl">
       {children}
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel
-          defaultSize={20}
-          className="hidden lg:block bg-red-500 rounded-xl"
-        >
-          A
+      <ResizablePanelGroup direction="horizontal" className="gap-0.5 p-2 pt-0">
+        <ResizablePanel defaultSize={25} className="hidden lg:block rounded-lg">
+          {problem}
         </ResizablePanel>
         <ResizableHandle className="hidden lg:block bg-transparent hover:bg-cyan-500" />
-        <ResizablePanel defaultSize={60} className="bg-yellow-500 rounded-xl">
-          B
+        <ResizablePanel defaultSize={50} className="rounded-lg">
+          {editor}
         </ResizablePanel>
         <ResizableHandle className="hidden xl:block bg-transparent hover:bg-cyan-500" />
-        <ResizablePanel
-          defaultSize={20}
-          className="hidden xl:block bg-green-500 rounded-xl"
-        >
-          C
+        <ResizablePanel defaultSize={25} className="hidden xl:block rounded-lg">
+          {console}
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
