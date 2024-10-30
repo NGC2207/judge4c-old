@@ -9,16 +9,16 @@ export default function AnswerLayout({
   return (
     <div className="h-full w-full border rounded-lg">
       {children}
-      <Tabs defaultValue="code">
-        <TabsList className="flex flex-row items-center justify-start rounded-t-lg rounded-b-none">
-          <TabsTrigger value="code" className="rounded-lg">
+      <Tabs defaultValue="code" className="h-full w-full flex flex-col">
+        <TabsList className="flex flex-row items-center justify-start rounded-b-none h-9">
+          <TabsTrigger value="code" className="rounded-full h-7 px-2 py-1">
             <div className="flex flex-row items-center justify-start">
               <CodeXml className="h-6 w-auto text-cyan-500" />
               <span className="ml-2">代码</span>
             </div>
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="code">{code}</TabsContent>
+        <TabsContent value="code" className="flex-grow mt-0">{code}</TabsContent>
       </Tabs>
     </div>
   );
