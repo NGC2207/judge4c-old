@@ -14,7 +14,7 @@ export default function Error({
 
   return (
     <section className="h-full w-full border rounded-lg p-4 bg-red-300">
-      <h2 className="text-xl text-red-800">Editor Error!</h2>
+      <h2 className="text-xl text-red-800">Answer Error!</h2>
       <p>{error?.message}</p>
     </section>
   );

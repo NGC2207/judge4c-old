@@ -7,12 +7,12 @@ import {
 export default function PlaygroundLayout({
   children,
   problem,
-  editor,
+  answer,
   console,
 }: Readonly<{
   children: React.ReactNode;
   problem: React.ReactNode;
-  editor: React.ReactNode;
+  answer: React.ReactNode;
   console: React.ReactNode;
 }>) {
   return (
@@ -24,7 +24,7 @@ export default function PlaygroundLayout({
         </ResizablePanel>
         <ResizableHandle className="hidden lg:block bg-transparent hover:bg-cyan-500" />
         <ResizablePanel defaultSize={50} className="rounded-lg">
-          {editor}
+          {answer}
         </ResizablePanel>
         <ResizableHandle className="hidden xl:block bg-transparent hover:bg-cyan-500" />
         <ResizablePanel defaultSize={25} className="hidden xl:block rounded-lg">
