@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,81 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @id @default(uuid())
+  username    String       @unique
+  password    String
+  email       String       @unique
+  submissions Submission[]
+}
+
+model Problem {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  content     String
+  templates   Template[]
+  constraints Constraint[]
+  testCases   TestCase[]
+  answers     Answer[]
+  submissions Submission[]
+}
+
+model Template {
+  id        String  @id @default(uuid())
+  language  String
+  code      String
+  problemId String
+  problem   Problem @relation(fields: [problemId], references: [id])
+}
+
+model Constraint {
+  id          String  @id @default(uuid())
+  language    String
+  cpuLimit    Int
+  memoryLimit Int
+  problemId   String
+  problem     Problem @relation(fields: [problemId], references: [id])
+}
+
+model TestCase {
+  id        String  @id @default(uuid())
+  input     String
+  output    String
+  problemId String
+  problem   Problem @relation(fields: [problemId], references: [id])
+}
+
+model Answer {
+  id        String  @id @default(uuid())
+  language  String
+  code      String
+  problemId String
+  problem   Problem @relation(fields: [problemId], references: [id])
+}
+
+model Submission {
+  id         String             @id @default(uuid())
+  userId     String
+  user       User               @relation(fields: [userId], references: [id])
+  problemId  String
+  problem    Problem            @relation(fields: [problemId], references: [id])
+  language   String
+  code       String
+  status     String
+  createdAt  DateTime           @default(now())
+  evaluation EvaluationResult[]
+}
+
+model EvaluationResult {
+  id           String     @id @default(uuid())
+  submissionId String
+  submission   Submission @relation(fields: [submissionId], references: [id])
+  passedCases  Int
+  totalCases   Int
+  timeUsed     Float
+  memoryUsed   Float
+  logs         String
 }
