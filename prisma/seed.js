@@ -54,22 +54,22 @@ async function main() {
   // 创建模板
   const templates = [
     {
-      language: "C",
+      language: "c",
       code: `#include <stdio.h>\n\nint* twoSum(int* nums, int numsSize, int target, int* returnSize){\n    // Your code here\n}\n`,
       problemId: problem1.id,
     },
     {
-      language: "Java",
+      language: "java",
       code: `import java.util.HashMap;\n\nclass Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Your code here\n    }\n}\n`,
       problemId: problem1.id,
     },
     {
-      language: "C",
+      language: "c",
       code: `#include <stdio.h>\n\nstruct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){\n    // Your code here\n}\n`,
       problemId: problem2.id,
     },
     {
-      language: "Java",
+      language: "java",
       code: `class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        // Your code here\n    }\n}\n`,
       problemId: problem2.id,
     },
@@ -84,25 +84,25 @@ async function main() {
   // 创建约束
   const constraints = [
     {
-      language: "C",
+      language: "c",
       cpuLimit: 1000,
       memoryLimit: 128,
       problemId: problem1.id,
     },
     {
-      language: "Java",
+      language: "java",
       cpuLimit: 2000,
       memoryLimit: 256,
       problemId: problem1.id,
     },
     {
-      language: "C",
+      language: "c",
       cpuLimit: 1000,
       memoryLimit: 128,
       problemId: problem2.id,
     },
     {
-      language: "Java",
+      language: "java",
       cpuLimit: 2000,
       memoryLimit: 256,
       problemId: problem2.id,
@@ -148,22 +148,22 @@ async function main() {
   // 创建答案
   const answers = [
     {
-      language: "C",
+      language: "c",
       code: `#include <stdio.h>\n\nint* twoSum(int* nums, int numsSize, int target, int* returnSize){\n    for (int i = 0; i < numsSize; i++) {\n        for (int j = i + 1; j < numsSize; j++) {\n            if (nums[i] + nums[j] == target) {\n                int* result = (int*)malloc(2 * sizeof(int));\n                result[0] = i;\n                result[1] = j;\n                *returnSize = 2;\n                return result;\n            }\n        }\n    }\n    *returnSize = 0;\n    return NULL;\n}\n`,
       problemId: problem1.id,
     },
     {
-      language: "Java",
+      language: "java",
       code: `import java.util.HashMap;\n\nclass Solution {\n    public int[] twoSum(int[] nums, int target) {\n        HashMap<Integer, Integer> map = new HashMap<>();\n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            if (map.containsKey(complement)) {\n                return new int[] { map.get(complement), i };\n            }\n            map.put(nums[i], i);\n        }\n        return null;\n    }\n}\n`,
       problemId: problem1.id,
     },
     {
-      language: "C",
+      language: "c",
       code: `#include <stdio.h>\n\nstruct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){\n    struct ListNode* dummyHead = (struct ListNode*)malloc(sizeof(struct ListNode));\n    struct ListNode* p = l1, *q = l2, *curr = dummyHead;\n    int carry = 0;\n    while (p != NULL || q != NULL) {\n        int x = (p != NULL) ? p->val : 0;\n        int y = (q != NULL) ? q->val : 0;\n        int sum = carry + x + y;\n        carry = sum / 10;\n        curr->next = (struct ListNode*)malloc(sizeof(struct ListNode));\n        curr->next->val = sum % 10;\n        curr = curr->next;\n        if (p != NULL) p = p->next;\n        if (q != NULL) q = q->next;\n    }\n    if (carry > 0) {\n        curr->next = (struct ListNode*)malloc(sizeof(struct ListNode));\n        curr->next->val = carry;\n    }\n    return dummyHead->next;\n}\n`,
       problemId: problem2.id,
     },
     {
-      language: "Java",
+      language: "java",
       code: `class ListNode {\n    int val;\n    ListNode next;\n    ListNode(int x) { val = x; }\n}\n\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode dummyHead = new ListNode(0);\n        ListNode p = l1, q = l2, curr = dummyHead;\n        int carry = 0;\n        while (p != null || q != null) {\n            int x = (p != null) ? p.val : 0;\n            int y = (q != null) ? q.val : 0;\n            int sum = carry + x + y;\n            carry = sum / 10;\n            curr.next = new ListNode(sum % 10);\n            curr = curr.next;\n            if (p != null) p = p.next;\n            if (q != null) q = q.next;\n        }\n        if (carry > 0) {\n            curr.next = new ListNode(carry);\n        }\n        return dummyHead.next;\n    }\n}\n`,
       problemId: problem2.id,
     },
@@ -184,7 +184,7 @@ async function main() {
       problem: {
         connect: { id: problem1.id },
       },
-      language: "Java",
+      language: "java",
       code: `class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        HashMap<Integer, Integer> map = new HashMap<>();\n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            if (map.containsKey(complement)) {\n                return new int[] { map.get(complement), i };\n            }\n            map.put(nums[i], i);\n        }\n        return null;\n    }\n}\n`,
       status: "Accepted",
     },
